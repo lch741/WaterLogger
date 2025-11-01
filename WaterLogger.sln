@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterLogger", "WaterLogger\WaterLogger.csproj", "{C9D885D8-2319-47B0-901F-58DC10650DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL", "SQL\SQL.csproj", "{31147B06-34B8-472C-AD0C-4C3AF3199425}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{C9D885D8-2319-47B0-901F-58DC10650DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9D885D8-2319-47B0-901F-58DC10650DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9D885D8-2319-47B0-901F-58DC10650DFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31147B06-34B8-472C-AD0C-4C3AF3199425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31147B06-34B8-472C-AD0C-4C3AF3199425}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31147B06-34B8-472C-AD0C-4C3AF3199425}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31147B06-34B8-472C-AD0C-4C3AF3199425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using WaterLogger.Models;
 
 namespace WaterLogger.Pages
@@ -23,10 +23,10 @@ namespace WaterLogger.Pages
         private DrinkingWaterModel GetById(int id)
         {
             String connectionString = _configuration.GetConnectionString("WaterLoggerConnection");
-            using (var connection = new SqlConnection(connectionString)){
+            using (var connection = new SqliteConnection(connectionString)){
                 connection.Open();
                 var sql = "SELECT ID, LogDate, Quantity FROM drinking_water WHERE Id = @id";
-                using (var command = new SqlCommand(sql, connection))
+                using (var command = new SqliteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue(@"id", id);
                     using (var reader = command.ExecuteReader())
@@ -52,11 +52,11 @@ namespace WaterLogger.Pages
         public IActionResult OnPost()
         {
             String connectionString = _configuration.GetConnectionString("WaterLoggerConnection");
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
                 var sql = "DELETE FROM drinking_water WHERE Id = @id";
-                using (var command = new SqlCommand(sql, connection))
+                using (var command = new SqliteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", DrinkingWater.Id);
                     command.ExecuteNonQuery();

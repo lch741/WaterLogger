@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Data.Sqlite;
 using WaterLogger.Models;
 namespace WaterLogger.Pages
 {
@@ -23,11 +21,11 @@ namespace WaterLogger.Pages
         public List<DrinkingWaterModel> GetAllRecords()
         {
             string connectionString = _configuration.GetConnectionString("WaterLoggerConnection");
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
                 var sql = "SELECT Id, LogDate, Quantity FROM drinking_water ORDER BY LogDate DESC";
-                using (var command = new SqlCommand(sql, connection))
+                using (var command = new SqliteCommand(sql, connection))
                 {
                     var tableData = new List<DrinkingWaterModel>();
                     using (var reader = command.ExecuteReader())

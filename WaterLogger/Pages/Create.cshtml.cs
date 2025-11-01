@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
-using System.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using WaterLogger.Models;
-using SqlCommand = Microsoft.Data.SqlClient.SqlCommand;
-using SqlConnection = Microsoft.Data.SqlClient.SqlConnection;
 
 namespace WaterLogger.Pages
 {
@@ -31,17 +28,15 @@ namespace WaterLogger.Pages
             {
                 return Page();
             }
-
-            // 从 appsettings.json 获取连接字符串
             string connectionString = _configuration.GetConnectionString("WaterLoggerConnection");
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
 
                 var sql = "INSERT INTO drinking_water (LogDate, Quantity) VALUES (@date, @quantity)";
 
-                using (var command = new SqlCommand(sql, connection))
+                using (var command = new SqliteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@date", DrinkingWater.Date);
                     command.Parameters.AddWithValue("@quantity", DrinkingWater.Quantity);
